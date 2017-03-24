@@ -22,20 +22,45 @@
 <body style="height: 100%">
 <!-- CHANGE WIDTH AND HEIGHT TO CSS -->
 <div>
-    <canvas id="simple_sketch" style="width: 80%; height: 100%"></canvas>
-    <script type="text/javascript">
-      $(function() {
-        $('#simple_sketch').sketch();
-      });
-    </script>
-    <div id="side_menu" style="float: right; height: 100%; width: 20%">
-        <ul class="list-group">
-            <li class="list-group-item">
-                <span class="badge">14</span>
-                {{ uname }}
-            </li>
-        </ul>
-    </div>
+    <form>
+        <canvas id="simple_sketch" style="width: 80%; height: 100%"></canvas>
+
+        <script type="text/javascript">
+          $(function() {
+            $('#simple_sketch').sketch();
+          });
+        </script>
+
+
+        <div id="side_menu" style="float: right; height: 100%; width: 20%">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <span class="badge">14</span>
+                    {{ uname }}
+                </li>
+            </ul>
+        </div>
+
+        <button id='sendPic'>Send picture</button>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('#sendPic').click(function(){
+                    updatePieFact();
+                });
+            });
+
+            function sendPicture() {
+                var data = {"user.jpeg": document.getElementById('simple_sketch').toDataURL('image/jpeg')};
+                $.post("{% url 'take_picture' %}", data, function(responce){
+                    if(responce === 'success') {
+                        alert('Downloaded!')
+                    } else {
+                        alert('Error')
+                    }
+                });
+            }
+        </script>
+    </form>
 </div>
 
 </body>
