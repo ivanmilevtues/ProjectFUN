@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Log In menu</title>
+</head>
+<body>
+<form action="/fact/" method="POST">
+     {% csrf_token %} 
+    <label>Enter your username:</label>
+    <input type="text" name="username"/>
+    <input type="submit" name="submit">
+</form>
+</body>
+</html>
