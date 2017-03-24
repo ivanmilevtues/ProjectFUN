@@ -4,6 +4,14 @@
     <title>ROOM</title>
 </head>
 <body>
-
+<form>
+    <submit> 
+       <form class="form-signin" action="" method="POST">
+        {% csrf_token %} 
+        <p>{{ uname }}</p>
+        <input type="submit" class="btn btn-lg btn-primary btn-block" value="LogIn">
+        </form>
+    </submit>
+</form>
 </body>
 </html>
