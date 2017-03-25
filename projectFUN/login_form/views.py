@@ -6,19 +6,19 @@ from login_form.models import User
 
 
 # Create your views here.
-@annon_required(redirect_url='/profile')
+@annon_required(redirect_url='/play')
 def register(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
             request.session['email'] = request.POST['email']
-            return redirect('/profile')
+            return redirect('/play')
     form = RegisterForm()
     return render(request, 'register.html', locals())
 
 
-@annon_required(redirect_url='/profile')
+@annon_required(redirect_url='/play')
 def login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -26,7 +26,7 @@ def login(request):
             u = form.find()
             if u:
                 request.session['email'] = request.POST['email']
-                return redirect('/profile')
+                return redirect('/play')
     form = LoginForm()
     return render(request, 'sign_in.html', locals())
 

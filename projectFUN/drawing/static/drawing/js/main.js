@@ -21,6 +21,6 @@ function sendPicture() {
     var value = element.value;
     var data = {"user.jpeg": document.getElementById('simple_sketch').toDataURL('image/jpeg'),
                 "csrfmiddlewaretoken": value};
-    alert("CONTINUE")
+    // alert("CONTINUE")
     $.post("{% url 'play' %}", data, function(responce){});
 }

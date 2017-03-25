@@ -17,10 +17,11 @@ from django.conf.urls import url, include
 
 from django.contrib import admin
 
-from drawing.views import enter_username, play
+from drawing.views import enter_username, play, request_game
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('login_form.urls')),
-    url(r'^play/', play, name='play'),
+    url(r'^play/', request_game, name='request_game'),
+    url(r'^start_playing/', play, name='play'),
 ]

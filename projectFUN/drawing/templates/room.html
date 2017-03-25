@@ -39,10 +39,11 @@
 
         <div id="side_menu" style="float: right; height: 100%; width: 20%">
             <ul class="list-group">
+                {% for user in users %}
                 <li class="list-group-item">
-                    <span class="badge">14</span>
-                    {{ uname }}
+                    {{ user.username }}
                 </li>
+                {% endfor %}
             </ul>
         </div>
 
@@ -51,7 +52,7 @@
             <button id='sendPic'>Send picture</button>
         </form>
 		
-		 <span>{% static 'drawing/main.js' %}</span> 
+		 <!-- <span>{% static 'drawing/main.js' %}</span>  -->
 		<script type="text/javascript" src="{% static 'drawing/js/main.js' %}"></script>
     </form>
 </div>

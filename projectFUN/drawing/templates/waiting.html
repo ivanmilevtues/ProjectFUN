@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wait</title>
+</head>
+<body>
+<center><h2>Waiting for players</h2></center>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+    setInterval(function () {
+        $.ajax({
+          url: "{% url 'play' %}",
+          context: document.body
+        }).done(function(result) {
+            console.log(result);
+            window.location.href = "/start_playing";  
+        });
+    }, 1000);
+</script>
+</body>
+</html>
