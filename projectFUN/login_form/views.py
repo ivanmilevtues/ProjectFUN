@@ -26,6 +26,8 @@ def login(request):
             u = form.find()
             if u:
                 request.session['email'] = request.POST['email']
+                u.is_active = 1
+                u.save()
                 return redirect('/play')
     form = LoginForm()
     return render(request, 'sign_in.html', locals())

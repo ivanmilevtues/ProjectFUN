@@ -9,12 +9,27 @@ $(function() {
     $('#simple_sketch').sketch();
   });
  
+
+var start_time = 5;
+var x = setInterval(function() {
+
+    document.getElementById("timer").innerHTML = start_time;
+    start_time -= 1
+    if (start_time < 0) {
+        clearInterval(x);
+        document.getElementById("timer").innerHTML = "EXPIRED";
+        sendPicture();
+    }
+}, 1000);
+
   
 $(document).ready(function(){
     $('#sendPic').click(function(){
         sendPicture();
     });
 });
+
+
 function sendPicture() {
     var element = document.getElementsByName('csrfmiddlewaretoken')[0];
     // var key = element.name;

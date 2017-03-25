@@ -1,5 +1,7 @@
 from django.core.files.base import ContentFile
+
 from base64 import b64decode
+from random import random
 
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
@@ -32,6 +34,7 @@ def play(req):
     # import ipdb; ipdb.set_trace();
     users = User.objects.filter(is_active=1)
     if req.method == 'GET':
+        topic = take_topic()
         return render(req, 'room.html', locals())
     if req.method == 'POST':
         if 'user.jpeg' in req.POST:
@@ -47,9 +50,9 @@ def play(req):
 
 
 def take_topic():
-    with open('doodle.txt', 'r') as f:
-        topics = f.read();
-    return eval(topics)
+    with open('drawing/doodles.txt', 'r') as f:
+        topics = eval(f.read());
+    return topics[int(random() * len(topics))]
 
 # def result_room(req):
 #     if req.method == 'GET':
