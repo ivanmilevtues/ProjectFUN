@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'drawing',
     'projectFUN',
+    'login_form'
 ]
 
 MIDDLEWARE = [
