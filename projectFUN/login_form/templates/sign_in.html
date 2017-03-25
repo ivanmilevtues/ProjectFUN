@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
+    <title>Start</title>
+=======
     <title>Sign in</title>
+>>>>>>> deff1800a779a077b23fcf65429a3ad08c5275ab
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <!-- Optional theme -->
@@ -10,11 +14,24 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
+<<<<<<< HEAD
+
+<body>
+<div  class="container">
+    <form class="form-signin" action="" method="POST">
+        {% csrf_token %} 
+        <center><h2 class="form-signin-heading">Please log in</h2></center>
+        {{ form }}
+        <input type="submit" class="btn btn-lg btn-primary btn-block" value="LogIn">
+    </form>
+</div>
+=======
 <body>
     <form method="POST", action="">
         {% csrf_token %}
         {{ form }}
         <input class="btn btn-lg btn-primary btn-block" type="submit" value="Sign In" />
     </form>
+>>>>>>> deff1800a779a077b23fcf65429a3ad08c5275ab
 </body>
 </html>
