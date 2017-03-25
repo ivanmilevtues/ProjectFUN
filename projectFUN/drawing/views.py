@@ -34,9 +34,6 @@ def play(req):
     # import ipdb; ipdb.set_trace();
     users = User.objects.filter(is_active=1)
     if req.method == 'GET':
-        print('Locals')
-        print(locals())
-        # uname = req.session.get('username')
         return render(req, 'room.html', locals())
     if req.method == 'POST':
         if 'user.jpeg' in req.POST:
