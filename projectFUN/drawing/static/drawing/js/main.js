@@ -34,7 +34,7 @@ function sendPicture() {
     var element = document.getElementsByName('csrfmiddlewaretoken')[0];
     // var key = element.name;
     var value = element.value;
-    var data = {"user.jpeg": document.getElementById('simple_sketch').toDataURL('image/jpeg'),
+    var data = {"user.jpeg": document.getElementById('simple_sketch').toDataURL(''),
                 "csrfmiddlewaretoken": value};
     // alert("CONTINUE")
     $.post("{% url 'play' %}", data, function(responce){});

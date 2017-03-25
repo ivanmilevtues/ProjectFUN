@@ -7,5 +7,5 @@ class User(models.Model):
     password = models.CharField(max_length=128)
     username = models.CharField(max_length=32)
     is_active = models.BooleanField(default=True)
-    img = models.ImageField(null=True)
+    img = models.CharField(max_length=255, null=True)
 

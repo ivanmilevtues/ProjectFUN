@@ -41,15 +41,16 @@ def play(req):
         if 'user.jpeg' in req.POST:
             print('Pic')
             curr_user = User.objects.filter(email=req.session['email']).first()
-            image_data = b64decode(req.POST['user.jpeg'])
+            # image_data = b64decode(req.POST['user.jpeg'])
             # prin(tcurr_user.username)
-            curr_user.img = ContentFile(image_data, 'whatup.png')
+            filename = 'img_' + req.session.get('email') + '.png';
+            curr_user.img = filename
             curr_user.save()
             img_data = req.POST['user.jpeg']
             img_data = img_data.split(',')[1]
             img_data = bytes(img_data, 'utf-8')
             print(type(img_data))
-            with open('test.png', 'wb') as f:
+            with open(filename, 'wb') as f:
                 f.write(base64.decodebytes(img_data))
             # print('?????????????????')
             return redirect('/start_playing')  # Should redirect to the resultRoom
