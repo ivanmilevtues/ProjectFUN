@@ -1,5 +1,6 @@
 from django.core.files.base import ContentFile
 
+import base64
 from base64 import b64decode
 from random import random
 
@@ -44,6 +45,12 @@ def play(req):
             # prin(tcurr_user.username)
             curr_user.img = ContentFile(image_data, 'whatup.png')
             curr_user.save()
+            img_data = req.POST['user.jpeg']
+            img_data = img_data.split(',')[1]
+            img_data = bytes(img_data, 'utf-8')
+            print(type(img_data))
+            with open('test.png', 'wb') as f:
+                f.write(base64.decodebytes(img_data))
             # print('?????????????????')
             return redirect('/start_playing')  # Should redirect to the resultRoom
     return redirect('/start_playing')
