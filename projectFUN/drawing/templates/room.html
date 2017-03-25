@@ -1,4 +1,3 @@
-{% load static  %}
 <!DOCTYPE html>
 <html style="height: 100%">
 <head>
@@ -19,40 +18,98 @@
 <body style="height: 100%">
 <!-- CHANGE WIDTH AND HEIGHT TO CSS -->
 <div class="my-container">
+	<div><h1 style="margin-left: 50%;">TOPIC</h1></div>
     <form>
-		<div class="tools">
-			<a href="#simple_sketch" data-download="png" style="float: right; width: 100px;">Download</a>
+		<div class="tools" style="margin-left: 5%;">
 			
-			<a href="#simple_sketch" data-color="#f00" style="width: 10px;"> <button type="button" class="btn btn-default" style="background: #f00;"></button> </a>
-			<a href="#simple_sketch" data-color="#ff0" style="width: 10px;"> <button type="button" class="btn btn-default" style="background: #ff0;"></button> </a>
-			<a href="#simple_sketch" data-color="#0ff" style="width: 10px;"> <button type="button" class="btn btn-default" style="background: #0ff;"></button> </a>
-			<a href="#simple_sketch" data-color="#00f" style="width: 10px;"> <button type="button" class="btn btn-default" style="background: #00f;"></button> </a>
-			<a href="#simple_sketch" data-color="#f0f" style="width: 10px;"> <button type="button" class="btn btn-default" style="background: #f0f;"></button> </a>
-			<a href="#simple_sketch" data-color="#000" style="width: 10px;"> <button type="button" class="btn btn-default" style="background: #000;"></button> </a>
-			<a href="#simple_sketch" data-color="#fff" style="width: 10px;"> <button type="button" class="btn btn-default" style="background: #fff;"></button> </a>
+			
+			<a href="#simple_sketch" data-color="#fff" style="width: 100px;"> <button type="button" class="btn btn-default" style="background: #fff;"></button> </a>
+			<a href="#simple_sketch" data-color="#000" style="width: 100px;"> <button type="button" class="btn btn-default" style="background: #000;"></button> </a>
+			<a href="#simple_sketch" data-color="#cc2900" style="width: 100px;"> <button type="button" class="btn btn-default" style="background: #cc2900;"></button> </a>
+			<a href="#simple_sketch" data-color="#f00" style="width: 100px;"> <button type="button" class="btn btn-default" style="background: #f00;"></button> </a>
+			<a href="#simple_sketch" data-color="orange" style="width: 100px;"> <button type="button" class="btn btn-default" style="background: orange;"></button> </a>
+			<a href="#simple_sketch" data-color="#ff0" style="width: 100px;"> <button type="button" class="btn btn-default" style="background: #ff0;"></button> </a>
+			<a href="#simple_sketch" data-color="#e6e600" style="width: 100px;"> <button type="button" class="btn btn-default" style="background: #e6e600;"></button> </a>
+			<a href="#simple_sketch" data-color="#009900" style="width: 100px;"> <button type="button" class="btn btn-default" style="background: #009900;"></button> </a>
+			<a href="#simple_sketch" data-color="#09f000" style="width: 100px;"> <button type="button" class="btn btn-default" style="background: #09f000;"></button> </a>
+			<a href="#simple_sketch" data-color="#d2ff4d" style="width: 100px;"> <button type="button" class="btn btn-default" style="background: #d2ff4d;"></button> </a>
+			<a href="#simple_sketch" data-color="#b3ecff" style="width: 100px;"> <button type="button" class="btn btn-default" style="background: #b3ecff;"></button> </a>
+			<a href="#simple_sketch" data-color="#33ccff" style="width: 100px;"> <button type="button" class="btn btn-default" style="background: #33ccff;"></button> </a>
+			<a href="#simple_sketch" data-color="#007399" style="width: 100px;"> <button type="button" class="btn btn-default" style="background: #007399;"></button> </a>
+			<a href="#simple_sketch" data-color="#00f" style="width: 100px;"> <button type="button" class="btn btn-default" style="background: #00f;"></button> </a>
+			<a href="#simple_sketch" data-color="#000080" style="width: 100px;"> <button type="button" class="btn btn-default" style="background: #000080;"></button> </a>
+			<a href="#simple_sketch" data-color="purple" style="width: 100px;"> <button type="button" class="btn btn-default" style="background: purple;"></button> </a>
+			<a href="#simple_sketch" data-color="#f0f" style="width: 100px;"> <button type="button" class="btn btn-default" style="background: #f0f;"></button> </a>
+			<a href="#simple_sketch" data-color="pink" style="width: 100px;"> <button type="button" class="btn btn-default" style="background: pink;"></button> </a>
+			BRUSH SIZE:
+			<a href="#simple_sketch" data-size="5" style="width: 100px;"> <button type="button" class="btn btn-default" style="background: white;">5</button> </a>
+			<a href="#simple_sketch" data-size="10" style="width: 100px;"> <button type="button" class="btn btn-default" style="background: white;">10</button> </a>
+			<a href="#simple_sketch" data-size="15" style="width: 100px;"> <button type="button" class="btn btn-default" style="background: white;">15</button> </a>
+			
 		</div>
 		
-
-        <canvas id="simple_sketch" width="600" height="600"></canvas>
+		<div style="text-align:center;width: 1000px;margin-left: 5%;display: inline-block;">
+			<canvas id="simple_sketch" height="600" style="border: solid black" width="1000"></canvas>
+		</div>
 		
-
-
-        <div id="side_menu" style="float: right; height: 100%; width: 20%">
+        <div id="side_menu" style="float: right; height: 50%; width: 30%">
             <ul class="list-group">
                 <li class="list-group-item">
-                    <span class="badge">14</span>
-                    {{ uname }}
+					<img src="nophoto.png" style="width:10%;height:10%;">
+                    <span class="badge">0 points</span>
+                    {{ first user }}
                 </li>
+				<li class="list-group-item">
+					<img src="nophoto.png" style="width:10%;height:10%;">
+					<span class="badge">0 points</span>
+					{{ second user }}
+				</li>
+				<li class="list-group-item">
+					<img src="nophoto.png" style="width:10%;height:10%;">
+					<span class="badge">0 points</span>
+					{{ third user }}
+				</li>
+				<li class="list-group-item">
+					<img src="nophoto.png" style="width:10%;height:10%;">
+					<span class="badge">0 points</span>
+					{{ forth user }}
+				</li>
+				<li class="list-group-item">
+					<img src="nophoto.png" style="width:10%;height:10%;">
+					<span class="badge">0 points</span>
+					{{ fifth user }}
+				</li>
+				<li class="list-group-item">
+					<img src="nophoto.png" style="width:10%;height:10%;">
+					<span class="badge">0 points</span>
+					{{ sixth user }}
+				</li>
             </ul>
         </div>
-
+	
+		<style>
+			.button{
+				background-color: #4CAF50; /* Green */
+				border: none;
+				color: white;
+				padding: 15px 32px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 16px;
+			}
+		</style>
+		<div></div>
+		
+		
+		<a href="#simple_sketch" data-download="png" style="float: right;width:10%;height:10%;" <!--style="float: right;--> ><button type="sendPic" class="btn btn-info">Download picture</button></a>
         <form method="POST">
             {% csrf_token %} 
-            <button id='sendPic'>Send picture</button>
+			<button type="button" class="btn btn-success" style="float: right;width:10%;height:10%;margin-left: 1%;">FINISH</button>
         </form>
 		
-		 <span>{% static 'drawing/main.js' %}</span> 
-		<script type="text/javascript" src="{% static 'drawing/js/main.js' %}"></script>
+		
+		<script type="text/javascript" src="main.js"></script>
     </form>
 </div>
 
