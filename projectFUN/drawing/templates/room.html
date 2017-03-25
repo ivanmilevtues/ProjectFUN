@@ -1,3 +1,4 @@
+{% load static  %}
 <!DOCTYPE html>
 <html style="height: 100%">
 <head>
@@ -50,8 +51,8 @@
             <button id='sendPic'>Send picture</button>
         </form>
 		
-		
-		<script type="text/javascript" src="main.js"></script>
+		 <span>{% static 'drawing/main.js' %}</span> 
+		<script type="text/javascript" src="{% static 'drawing/js/main.js' %}"></script>
     </form>
 </div>
 
