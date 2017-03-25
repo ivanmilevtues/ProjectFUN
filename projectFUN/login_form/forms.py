@@ -9,12 +9,17 @@ class RegisterForm(forms.ModelForm):
         model = User
         fields = ['email', 'password', 'username']
         labels = {
-            'email': 'Email:',
-            'password': 'Password:',
-            'username': 'Username:',
+            'email': '',
+            'password': '',
+            'username': '',
         }
         widgets = {
-            'password': forms.PasswordInput()
+            'email': forms.TextInput(attrs={'class': 'form-control',
+                                            'placeholder': 'Email'}),
+            'username': forms.TextInput(attrs={'class': 'form-control',
+                                               'placeholder': 'Username'}),
+            'password': forms.PasswordInput(attrs={'class': 'form-control',
+                                                   'placeholder': 'Password'})
         }
 
     def clean_password(self):
@@ -24,8 +29,14 @@ class RegisterForm(forms.ModelForm):
 
 
 class LoginForm(forms.Form):
-    email = forms.EmailField()
-    password = forms.CharField(widget=forms.PasswordInput, max_length=128)
+    email = forms.EmailField(label='', widget=forms.
+                             TextInput(attrs={'class': 'form-control',
+                                              'placeholder': 'Email'}))
+    password = forms.CharField(label='', widget=forms.
+                               PasswordInput(attrs={'class': 'form-control',
+                                                    'placeholder':
+                                                    'Password'}),
+                               max_length=128)
 
     def clean_password(self):
         password = hashlib.sha512(self.cleaned_data['password'].encode())\
