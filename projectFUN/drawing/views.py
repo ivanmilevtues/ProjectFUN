@@ -15,13 +15,12 @@ def enter_username(req):
 
 
 def play(req):
-    # if req.method == 'GET':
-    uname = req.session.get('username')
-    return render(req, 'room.html', locals())
-
-
-def take_picture(req):
-    if req.mode == 'POST':
+    # import ipdb; ipdb.set_trace();
+    if req.method == 'GET':
+        uname = req.session.get('username')
+        return render(req, 'room.html', locals())
+    if req.method == 'POST':
         if 'user.jpeg' in req.POST:
+            print('Here is img')
             return HttpResponse('success')
     return HttpResponse('FAIL!!!!!')

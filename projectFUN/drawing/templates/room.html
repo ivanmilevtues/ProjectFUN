@@ -41,17 +41,25 @@
             </ul>
         </div>
 
-        <button id='sendPic'>Send picture</button>
+        <form method="POST">
+            {% csrf_token %} 
+            <button id='sendPic'>Send picture</button>
+        </form>
         <script type="text/javascript">
             $(document).ready(function(){
                 $('#sendPic').click(function(){
-                    updatePieFact();
+                    sendPicture();
                 });
             });
 
             function sendPicture() {
-                var data = {"user.jpeg": document.getElementById('simple_sketch').toDataURL('image/jpeg')};
-                $.post("{% url 'take_picture' %}", data, function(responce){
+                var element = document.getElementsByName('csrfmiddlewaretoken')[0];
+                // var key = element.name;
+                var value = element.value;
+                var data = {"user.jpeg": document.getElementById('simple_sketch').toDataURL('image/jpeg'),
+                            "csrfmiddlewaretoken": value};
+                alert("CONTINUE")
+                $.post("{% url 'play' %}", data, function(responce){
                     if(responce === 'success') {
                         alert('Downloaded!')
                     } else {
