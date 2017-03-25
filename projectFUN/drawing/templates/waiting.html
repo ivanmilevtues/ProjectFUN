@@ -10,11 +10,13 @@
 <script type="text/javascript">
     setInterval(function () {
         $.ajax({
-          url: "{% url 'play' %}",
+          url: "{% url 'count_users' %}",
           context: document.body
         }).done(function(result) {
             console.log(result);
-            window.location.href = "/start_playing";  
+            if(result.users >= 3) {
+                window.location.href = "/start_playing";  
+            }
         });
     }, 1000);
 </script>

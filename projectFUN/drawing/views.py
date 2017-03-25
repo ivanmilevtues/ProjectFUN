@@ -20,10 +20,8 @@ def enter_username(req):
 
 def count_users(req):
     users = User.objects.filter(is_active=1)
-    if users.count() < 3:
-        return JsonResponse({ 'users': users.count() })
-    else:
-        return redirect('/start_playing')
+    print('COUNT USERS')
+    return JsonResponse({ 'users': users.count() })
 
 
 def request_game(req):
@@ -40,12 +38,18 @@ def play(req):
             print('Pic')
             curr_user = User.objects.filter(email=req.session['email']).first()
             image_data = b64decode(req.POST['user.jpeg'])
-            print(curr_user.username)
+            # prin(tcurr_user.username)
             curr_user.img = ContentFile(image_data, 'whatup.png')
             curr_user.save()
-            return redirect('/play')  # Should redirect to the resultRoom
-    return HttpResponse('FAIL!!!!!')
+            # print('?????????????????')
+            return redirect('/start_playing')  # Should redirect to the resultRoom
+    return redirect('/start_playing')
 
+
+def take_topic():
+    with open('doodle.txt', 'r') as f:
+        topics = f.read();
+    return eval(topics)
 
 # def result_room(req):
 #     if req.method == 'GET':
