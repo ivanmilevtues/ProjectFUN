@@ -21,6 +21,6 @@ from drawing.views import enter_username, play
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', enter_username),
+    url(r'^', include('login_form.urls')),
     url(r'^play/', play, name='play'),
 ]
