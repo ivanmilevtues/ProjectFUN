@@ -17,12 +17,14 @@ from django.conf.urls import url, include
 
 from django.contrib import admin
 
-from drawing.views import enter_username, play, request_game, count_users
+from drawing.views import play, request_game, count_users, final_room
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('login_form.urls')),
     url(r'^play/', request_game, name='request_game'),
     url(r'^start_playing/', play, name='play'),
-    url(r'^ready_for_play/', count_users, name='count_users')
+    url(r'^ready_for_play/', count_users, name='count_users'),
+    url(r'^result_room/', final_room, name='final_room')
 ]

@@ -8,4 +8,5 @@ class User(models.Model):
     username = models.CharField(max_length=32)
     is_active = models.BooleanField(default=True)
     img = models.CharField(max_length=255, null=True)
+    is_king = models.BooleanField(default=False)
 

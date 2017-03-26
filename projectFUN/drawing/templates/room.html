@@ -26,8 +26,12 @@
         </h1>
     </div>
 </div>
+
 <div class="my-container">
-		<div class="tools">
+    {% if user.is_king %}
+        <h1>Waiting for players to compete their doodles...</h1>
+	{% else %}
+    	<div class="tools">
 			<a href="#simple_sketch" data-download="png" style="float: right; width: 100px;">Download</a>
 			
 			<a href="#simple_sketch" data-color="#f00" style="width: 10px;"> <button type="button" class="btn btn-default" style="background: #f00;"></button> </a>
@@ -43,12 +47,15 @@
         <canvas id="simple_sketch" width="600" height="600"></canvas>
 		
 
-
+    {% endif %}
         <div id="side_menu" style="float: right; height: 100%; width: 20%">
             <ul class="list-group">
                 {% for user in users %}
                 <li class="list-group-item">
                     {{ user.username }}
+                    {% if user.is_king %}
+                    <img src="{% static 'drawing/images/crown.ico' %}">
+                    {% endif %}
                 </li>
                 {% endfor %}
             </ul>
@@ -56,7 +63,7 @@
 
         <form method="POST">
             {% csrf_token %} 
-            <button id='sendPic'>Send picture</button>
+            <button id='sendPic' style="visibility: hidden;  ">Send picture</button>
         </form>
 		
 		 <!-- <span>{% static 'drawing/main.js' %}</span>  -->

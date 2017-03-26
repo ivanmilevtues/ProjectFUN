@@ -11,19 +11,8 @@ from login_form.models import User
 # Create your views here.
 
 
-def enter_username(req):
-    if req.method == 'GET':
-        return render(req, 'login.html')
-    elif req.method == 'POST':
-        username = req.POST.get('username')
-        req.session['username'] = username
-        print(username)
-        return redirect('/play')
-
-
 def count_users(req):
     users = User.objects.filter(is_active=1)
-    print('COUNT USERS')
     return JsonResponse({ 'users': users.count() })
 
 
@@ -36,33 +25,36 @@ def play(req):
     users = User.objects.filter(is_active=1)
     if req.method == 'GET':
         topic = take_topic()
+        user = User.objects.filter(email=req.session['email']).first()
         return render(req, 'room.html', locals())
     if req.method == 'POST':
         if 'user.jpeg' in req.POST:
-            print('Pic')
-            curr_user = User.objects.filter(email=req.session['email']).first()
-            # image_data = b64decode(req.POST['user.jpeg'])
-            # prin(tcurr_user.username)
-            filename = 'img_' + req.session.get('email') + '.png';
-            curr_user.img = filename
-            curr_user.save()
-            img_data = req.POST['user.jpeg']
-            img_data = img_data.split(',')[1]
-            img_data = bytes(img_data, 'utf-8')
-            print(type(img_data))
-            with open(filename, 'wb') as f:
-                f.write(base64.decodebytes(img_data))
-            # print('?????????????????')
-            return redirect('/start_playing')  # Should redirect to the resultRoom
+            try:
+                curr_user = User.objects.filter(email=req.session['email']).first()
+                filename = 'drawing/images/img_' + req.session.get('email') + '.png';
+                curr_user.img = filename
+                curr_user.save()
+                img_data = req.POST['user.jpeg']
+                img_data = img_data.split(',')[1]
+                img_data = bytes(img_data, 'utf-8')
+                with open(filename, 'wb') as f:
+                    f.write(base64.decodebytes(img_data))
+            except:
+                print('Error')
+            finally:
+                # if not curr_user.is_king:
+                #     sleep(2)
+                return redirect('/result_room')  # Should redirect to the resultRoom
     return redirect('/start_playing')
+
+
+def final_room(req):
+    users = User.objects.filter(is_active=1) 
+    print('HERE')
+    return render(req, 'final_room.html', locals())
 
 
 def take_topic():
     with open('drawing/doodles.txt', 'r') as f:
         topics = eval(f.read());
     return topics[int(random() * len(topics))]
-
-# def result_room(req):
-#     if req.method == 'GET':
-#         users = User.objects.filter(is_active=1)
-#         return render(result_room)
