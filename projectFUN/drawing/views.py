@@ -31,14 +31,23 @@ def play(req):
         if 'user.jpeg' in req.POST:
             try:
                 curr_user = User.objects.filter(email=req.session['email']).first()
-                filename = 'drawing/images/img_' + req.session.get('email') + '.png';
-                curr_user.img = filename
+                # filename = 'drawing/static/drawing/images/img_' + req.session.get('email') + '.png';
+                # curr_user.img = filename
+                # curr_user.save()
+                # img_data = req.POST['user.jpeg']
+                # img_data = img_data.split(',')[1]
+                # img_data = bytes(img_data, 'utf-8')
+
+                # print('?')
+                # with open(filename, 'wb') as f:
+                #     f.write(base64.decodebytes(img_data))
+                # print('File saved in:', filename)
+                # image_data = b64decode(req.POST['user.jpeg'])
+                # prin(tcurr_user.username)
+                curr_user.img = req.POST['user.jpeg']
                 curr_user.save()
-                img_data = req.POST['user.jpeg']
-                img_data = img_data.split(',')[1]
-                img_data = bytes(img_data, 'utf-8')
-                with open(filename, 'wb') as f:
-                    f.write(base64.decodebytes(img_data))
+                print(req.POST['user.jpeg'])
+                curr_user = User.objects.filter(email=req.session['email']).first()
             except:
                 print('Error')
             finally:
@@ -51,11 +60,11 @@ def play(req):
 def final_room(req):
     users = User.objects.filter(is_active=1) 
     curr_user = User.objects.filter(email=req.session['email']).first()
-    print('HERE')
+    print(users)
     return render(req, 'final_room.html', locals())
 
 
 def take_topic():
     with open('drawing/doodles.txt', 'r') as f:
         topics = eval(f.read());
-    return topics[int(random() * len(topics))]
+    return topics[1]

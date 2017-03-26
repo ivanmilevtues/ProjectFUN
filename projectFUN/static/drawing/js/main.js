@@ -10,7 +10,7 @@ $(function() {
   });
  
 
-var start_time = 5;
+var start_time = 90;
 var x = setInterval(function() {
 
     document.getElementById("timer").innerHTML = start_time;

@@ -5,14 +5,22 @@
     <title>Final Room</title>
 </head>
 <body>
+    <p id="remaining_time"></p>
     <form method="POST">
     {% for user in users %}
     <h2>{{ user.username }}</h2>
     {% if curr_user.is_king %}
-          <input type="radio" name="{{ user.username }}" value="Give +1">Pick Winner<br>
+          <input type="checkbox" name="{{ user.username }}" value="Give +1">Pick Winner<br>
     {% endif %}
-    <img src="{% static user.img %}">
+    <img src="{{ user.img }}">
     {% endfor %}
     </form>
+    <script type="text/javascript">
+        // var x = setInterval(function() {
+
+        //     document.getElementById("remaining_time").innerHTML = timer + ' seconds remaining to pick winner.'
+        // })
+        
+    </script>
 </body>
 </html>
