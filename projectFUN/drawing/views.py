@@ -50,6 +50,7 @@ def play(req):
 
 def final_room(req):
     users = User.objects.filter(is_active=1) 
+    curr_user = User.objects.filter(email=req.session['email']).first()
     print('HERE')
     return render(req, 'final_room.html', locals())
 

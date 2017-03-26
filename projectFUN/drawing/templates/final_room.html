@@ -8,10 +8,10 @@
     <form method="POST">
     {% for user in users %}
     <h2>{{ user.username }}</h2>
-    <img src="{% static user.img %}">
-    {% if cur_user.is_king %}
-          <input type="radio" name="{{ user.username }}" value="Give +1"> Male<br>
+    {% if curr_user.is_king %}
+          <input type="radio" name="{{ user.username }}" value="Give +1">Pick Winner<br>
     {% endif %}
+    <img src="{% static user.img %}">
     {% endfor %}
     </form>
 </body>
